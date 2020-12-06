@@ -87,6 +87,8 @@ Vagrant.configure("2") do |config|
   # Import the repository signing key:
     wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
     apt-get update
+    echo 'debconf debconf/frontend select Noninteractive' | sudo debconf-set-selections
     apt-get install -y postgresql-8.4
+    systemctl status postgresql
   SHELL
 end
